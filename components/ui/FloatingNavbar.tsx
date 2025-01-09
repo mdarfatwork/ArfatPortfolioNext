@@ -6,8 +6,12 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
+
+interface NavItem {
+  name: string
+  link: string
+}
 
 export const FloatingNav = ({
   navItems,
@@ -25,7 +29,7 @@ export const FloatingNav = ({
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
-      let direction = current! - scrollYProgress.getPrevious()!;
+      const direction = current! - scrollYProgress.getPrevious()!;
 
       if (scrollYProgress.get() < 0.05) {
         // also set true for the initial state
@@ -72,7 +76,7 @@ export const FloatingNav = ({
           border: "1px solid rgba(255, 255, 255, 0.125)",
         }}
       >
-        {navItems.map((navItem: any, idx: number) => (
+        {navItems.map((navItem: NavItem, idx: number) => (
           <button
             key={`link=${idx}`}
             onClick={() => scrollToSection(navItem.link)}
