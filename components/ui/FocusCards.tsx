@@ -5,6 +5,16 @@ import { cn } from "@/lib/utils";
 import { MdRemoveRedEye } from "react-icons/md";
 import { IoCodeSlashSharp } from "react-icons/io5";
 
+interface Projects {
+    id: number,
+    title: string,
+    des: string,
+    img: string,
+    iconLists: string[],
+    link: string,
+    github: string,
+}
+
 export const Card = React.memo(
     ({
         card,
@@ -12,7 +22,7 @@ export const Card = React.memo(
         hovered,
         setHovered,
     }: {
-        card: any;
+        card: Projects;
         index: number;
         hovered: number | null;
         setHovered: React.Dispatch<React.SetStateAction<number | null>>;
@@ -48,7 +58,7 @@ export const Card = React.memo(
             </p>
 
             <div className="flex items-center justify-center mt-7 mb-3 w-full">
-                    {card.iconLists.map((icon: any, index: any) => (
+                    {card.iconLists.map((icon: string, index: number | string | any) => (
                         <div
                             key={index}
                             className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
@@ -77,12 +87,7 @@ export const Card = React.memo(
 
 Card.displayName = "Card";
 
-type Card = {
-    title: string;
-    img: string;
-};
-
-export function FocusCards({ cards }: { cards: Card[] }) {
+export function FocusCards({ cards }: { cards: Projects[] }) {
     const [hovered, setHovered] = useState<number | null>(null);
 
     return (
