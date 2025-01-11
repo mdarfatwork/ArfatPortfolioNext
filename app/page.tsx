@@ -1,9 +1,13 @@
-import Footer from "@/components/Footer";
-import Grid from "@/components/Grid";
-import Hero from "@/components/Hero";
-import RecentProjects from "@/components/RecentProjects";
+"use client"
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
+import Hero from "@/components/Hero";
+import RecentProjects from "@/components/RecentProjects";
+import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+
+const Grid = dynamic(() => import("@/components/Grid"), { ssr: false });
+
 
 export default function Home() {
   return (

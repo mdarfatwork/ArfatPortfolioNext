@@ -4,16 +4,6 @@ import { projects } from "@/data";
 import { FocusCards } from './ui/FocusCards';
 import { motion } from 'framer-motion';
 
-interface Projects {
-    id: number,
-    title: string,
-    des: string,
-    img: string,
-    iconLists: string[],
-    link: string,
-    github: string,
-}
-
 const RecentProjects = () => {
     return (
         <motion.section id='projects' className="w-full py-20"
